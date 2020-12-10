@@ -4,149 +4,144 @@ $line-color: burlywood;
 $circle-color: rgb(3, 97, 100);
 $btn-color: rgb(3, 133, 138);
 
-
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-size: 1.6rem;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    background: $bg-color;
-    color: $white;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 1.6rem;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background: $bg-color;
+  color: $white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .game {
-    width: 90%;
-    max-width: 45rem;
-    margin: 0 auto;
-    padding: 2rem;
+  width: 90%;
+  max-width: 45rem;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    display: inline-block;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+    border-bottom: 2px dashed $line-color;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  // Display number of wins and current player
+  &__status {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    span {
+      font-size: 6rem;
+      font-weight: 500;
+      display: inline-block;
+      position: relative;
 
-    &__title {
-        display: inline-block;
-        font-size: 3rem;
-        text-transform: uppercase;
-        font-weight: 400;
-        text-align: center;
-        border-bottom: 2px dashed $line-color;
-        padding-bottom: .5rem;
-        margin-bottom: 2rem;
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
     }
 
+    .player-x.active::before,
+    .player-o.active::before {
+      content: "";
+      width: 1rem;
+      height: 1rem;
+      background: $line-color;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+    }
+    .player-x.active::before {
+      left: 0;
+    }
+    .player-o.active::before {
+      right: 0;
+    }
+  }
 
-    // Display number of wins and current player
-    &__status {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 4rem;
-        span {
-            font-size: 6rem;
-            font-weight: 500;
-            display: inline-block;
-            position: relative;
+  &__container {
+    width: 280px;
+    background: $line-color;
+    display: grid;
+    grid-template-columns: repeat(3, 9.5rem);
+    grid-gap: 0.3rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
 
-            &:not(:last-child) {
-                margin-right: 1rem;
-            }
-        }
+  &__cell {
+    background: $bg-color;
+    height: 9.5rem;
+    position: relative;
 
-        .player-x.active::before,
-        .player-o.active::before {
-            content: '';
-            width: 1rem;
-            height: 1rem;
-            background: $line-color;
-            border-radius: 50%;
-            position: absolute;
-            top: 0;
-        }
-        .player-x.active::before {
-            left: 0;
-        }
-        .player-o.active::before {
-            right: 0;
-        }
+    // Player X Sign
+
+    &.played-x::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &.played-x::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
 
-    &__container {
-        width: 280px;
-        background: $line-color;
-        display: grid;
-        grid-template-columns: repeat(3, 9.5rem);
-        grid-gap:.3rem;
-        justify-content: center;
-        margin-bottom: 4rem;
+    // Player O sign
+
+    &.played-o::after {
+      width: 60%;
+      height: 60%;
+      background: $bg-color;
     }
 
-    &__cell {
-        background: $bg-color;
-        height: 9.5rem;
-        position: relative;
+    &:not(.played-x),
+    &:not(.played-o) {
+      cursor: pointer;
+    }
+  }
 
+  &__restart {
+    display: block;
+    width: 100%;
+    padding: 1.5rem;
+    text-align: center;
+    border: none;
+    background: $btn-color;
+    color: white;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 250ms linear;
 
-        // Player X Sign
-        
-        &.played-x::before {
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        &.played-x::after {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-
-
-        // Player O sign
-        
-        &.played-o::after {
-            width: 60%;
-            height: 60%;
-            background: $bg-color;
-        }
-
-        &:not(.played-x),
-        &:not(.played-o) {
-            cursor: pointer;
-        }
+    &:focus {
+      outline: 1px solid lighten($btn-color, 10%);
     }
 
-    &__restart {
-        display: block;
-        width: 100%;
-        padding: 1.5rem;
-        text-align: center;
-        border: none;
-        background: $btn-color;
-        color: white;
-        font-size: 1.8rem;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: opacity 250ms linear;
-
-        &:focus {
-            outline: 1px solid lighten($btn-color, 10%);
-        }
-
-        &:hover {
-            opacity: .8;
-        }
+    &:hover {
+      opacity: 0.8;
     }
+  }
 }
-
 
 // Player x sign and on hover
 // game__container without specific player class and cell without played class
@@ -154,81 +149,80 @@ body {
 .game__cell.played-x::after,
 .game__container:not(.playing-o) .game__cell:not(.played):hover::before,
 .game__container:not(.playing-o) .game__cell:not(.played):hover::after {
-    content: '';
-    width: .5rem;
-    height: 80%;
-    background: $white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  content: "";
+  width: 0.5rem;
+  height: 80%;
+  background: $white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .game__cell.played-x::before,
 .game__container:not(.playing-o) .game__cell:not(.played):hover::before {
-    transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 .game__cell.played-x::after,
 .game__container:not(.playing-o) .game__cell:not(.played):hover::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .game__container:not(.playing-o) .game__cell:not(.played):hover::before,
 .game__container:not(.playing-o) .game__cell:not(.played):hover::after {
-    opacity: .4;
+  opacity: 0.4;
 }
-
 
 // Player o sign and on hover
 .game__cell.played-o::before,
 .game__cell.played-o::after,
 .game__container:not(.playing-x) .game__cell:not(.played):hover::before,
 .game__container:not(.playing-x) .game__cell:not(.played):hover::after {
-    content: '';
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    background: $circle-color;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  content: "";
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: $circle-color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .game__cell.played-o::after,
 .game__container:not(.playing-x) .game__cell:not(.played):hover::after {
-    width: 60%;
-    height: 60%;
-    background: $bg-color;
+  width: 60%;
+  height: 60%;
+  background: $bg-color;
 }
 
 .game__container:not(.playing-x) .game__cell:not(.played):hover::before {
-    opacity: .2;
+  opacity: 0.2;
 }
 
-@media screen and (min-width: 768px) {
-    .game {
-        &__title {
-            font-size: 6rem;
-            margin-bottom: 4rem;
-        }
-        &__status span {
-            font-size: 8rem;
-
-            &.player-x.active::before,
-            &.player-o.active::before {
-                width: 2rem;
-                height: 2rem;
-            }
-        }
-        &__container {
-            width: 100%;
-            grid-template-columns: repeat(3, 14rem);
-            margin-bottom: 5rem;
-        }
-
-        &__cell {
-            height: 14rem;
-        }
+@media screen and (min-width: 1200px) {
+  .game {
+    &__title {
+      font-size: 6rem;
+      margin-bottom: 4rem;
     }
+    &__status span {
+      font-size: 8rem;
+
+      &.player-x.active::before,
+      &.player-o.active::before {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    &__container {
+      width: 100%;
+      grid-template-columns: repeat(3, 14rem);
+      margin-bottom: 5rem;
+    }
+
+    &__cell {
+      height: 14rem;
+    }
+  }
 }

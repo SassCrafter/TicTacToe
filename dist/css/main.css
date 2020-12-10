@@ -3,7 +3,6 @@
 *::after {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -17,14 +16,8 @@ body {
   background: cadetblue;
   color: #fff;
   min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -33,15 +26,8 @@ body {
   max-width: 45rem;
   margin: 0 auto;
   padding: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -57,14 +43,8 @@ body {
 }
 
 .game__status {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 4rem;
 }
@@ -105,8 +85,6 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 9.5rem);
   grid-gap: 0.3rem;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 4rem;
 }
@@ -118,14 +96,10 @@ body {
 }
 
 .game__cell.played-x::before {
-  -webkit-transform: translate(-50%, -50%) rotate(45deg);
-  -ms-transform: translate(-50%, -50%) rotate(45deg);
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .game__cell.played-x::after {
-  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
-  -ms-transform: translate(-50%, -50%) rotate(-45deg);
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
@@ -135,8 +109,7 @@ body {
   background: cadetblue;
 }
 
-.game__cell:not(.played-x),
-.game__cell:not(.played-o) {
+.game__cell:not(.played-x), .game__cell:not(.played-o) {
   cursor: pointer;
 }
 
@@ -151,8 +124,6 @@ body {
   font-size: 1.8rem;
   text-transform: uppercase;
   cursor: pointer;
-  -webkit-transition: opacity 250ms linear;
-  -o-transition: opacity 250ms linear;
   transition: opacity 250ms linear;
 }
 
@@ -175,22 +146,16 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
 .game__cell.played-x::before,
 .game__container:not(.playing-o) .game__cell:not(.played):hover::before {
-  -webkit-transform: translate(-50%, -50%) rotate(45deg);
-  -ms-transform: translate(-50%, -50%) rotate(45deg);
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .game__cell.played-x::after,
 .game__container:not(.playing-o) .game__cell:not(.played):hover::after {
-  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
-  -ms-transform: translate(-50%, -50%) rotate(-45deg);
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
@@ -211,8 +176,6 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -227,7 +190,7 @@ body {
   opacity: 0.2;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .game__title {
     font-size: 6rem;
     margin-bottom: 4rem;
@@ -235,8 +198,7 @@ body {
   .game__status span {
     font-size: 8rem;
   }
-  .game__status span.player-x.active::before,
-  .game__status span.player-o.active::before {
+  .game__status span.player-x.active::before, .game__status span.player-o.active::before {
     width: 2rem;
     height: 2rem;
   }

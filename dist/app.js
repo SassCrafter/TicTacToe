@@ -77,6 +77,7 @@ function resetGame() {
     cells.forEach(cell => {
         cell.classList.remove('played', 'played-x', 'played-o');
     });
+    gameContainer.classList.remove(`playing-${currentPlayer}`);
     currentPlayer = 'x';
     statusPlayerX.classList.add('active');
     statusPlayerO.classList.remove('active');
