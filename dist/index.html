@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    
+    <section class="game">
+        <h1 class="game__title">tic tac toe</h1>
+        <h2 class="game__status">
+            <span class="player-x active">0</span>
+            <span>:</span>
+            <span class="player-o">0</span>
+        </h2>
+        <div class="game__container playing-x">
+            <div class="game__cell " data-cell-index="0"></div>
+            <div class="game__cell " data-cell-index="1"></div>
+            <div class="game__cell" data-cell-index="2"></div>
+            <div class="game__cell" data-cell-index="3"></div>
+            <div class="game__cell" data-cell-index="4"></div>
+            <div class="game__cell" data-cell-index="5"></div>
+            <div class="game__cell" data-cell-index="6"></div>
+            <div class="game__cell" data-cell-index="7"></div>
+            <div class="game__cell" data-cell-index="8"></div>
+        </div>
+        <button class="game__restart">restart game</button>
+    </section>
+
+    <script src="./app.js"></script>
+</body>
+</html>
