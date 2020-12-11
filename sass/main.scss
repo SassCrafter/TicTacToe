@@ -35,6 +35,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   &__title {
     display: inline-block;
@@ -52,7 +53,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     span {
       font-size: 6rem;
       font-weight: 500;
@@ -72,14 +73,20 @@ body {
       background: $line-color;
       border-radius: 50%;
       position: absolute;
-      top: 0;
+      top: -1rem;
     }
     .player-x.active::before {
-      left: 0;
+      left: -1rem;
     }
     .player-o.active::before {
-      right: 0;
+      right: -1rem;
     }
+  }
+
+  &__message {
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 600;
   }
 
   &__container {
@@ -120,7 +127,7 @@ body {
     }
   }
 
-  &__restart {
+  .btn {
     display: block;
     width: 100%;
     padding: 1.5rem;
@@ -132,6 +139,7 @@ body {
     text-transform: uppercase;
     cursor: pointer;
     transition: opacity 250ms linear;
+    margin-bottom: 2rem;
 
     &:focus {
       outline: 1px solid lighten($btn-color, 10%);
